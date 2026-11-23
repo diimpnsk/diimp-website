@@ -181,7 +181,10 @@
   .sent p{color:var(--muted);margin-bottom:24px}
   .sent .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .btn-wa{background:#1FA855;color:#fff}
-  .btn-line{border-color:var(--line);color:var(--ink)}
+  .btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+  .btn-line:disabled{opacity:.6;cursor:wait}
+  .mail-status{margin-top:16px;font-size:14px;min-height:1.4em}
+  .mail-status.ok{color:#1F8A4C}.mail-status.bad{color:#C2185B}
 
   footer{background:var(--ink);color:rgba(255,255,255,.6);padding:40px 0;font-size:14px}
   footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
@@ -494,7 +497,8 @@
       <div class="sent" id="sent">
         <h3>Almost done!</h3>
         <p>Your enquiry is ready. Choose how you'd like to send it to us:</p>
-        <div class="row"><a class="btn btn-wa" id="waSend" target="_blank" rel="noopener">Send on WhatsApp</a><a class="btn btn-line" id="mailSend">Send by email</a></div>
+        <div class="row"><a class="btn btn-wa" id="waSend" target="_blank" rel="noopener">Send on WhatsApp</a><button type="button" class="btn btn-line" id="mailSend">Send by email</button></div>
+        <p class="mail-status" id="mailStatus" role="status"></p>
       </div>
     </form>
   </div>
@@ -513,6 +517,7 @@
 /* ---- Business details: edit these ---- */
 const WHATSAPP = "918355833096";          // country code + number, no "+" or spaces
 const EMAIL    = "biz@diimp.com";
+const WEB3FORMS_KEY = "82cc8041-6c17-424c-a670-968627341aca";                 // Web3Forms access key for biz@diimp.com (public key, safe in page)
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -572,9 +577,30 @@ form.addEventListener('submit',e=>{
   if(!ok) return;
   const msg=`Hello! New enquiry from the website:%0A%0A*Name:* ${encodeURIComponent(v('name'))}%0A*Phone:* ${encodeURIComponent(v('phone'))}%0A*Email:* ${encodeURIComponent(v('email')||'-')}%0A*Requirement:* ${encodeURIComponent(v('req'))}%0A*Details:* ${encodeURIComponent(v('desc')||'-')}`;
   document.getElementById('waSend').href=`https://wa.me/${WHATSAPP}?text=${msg}`;
-  document.getElementById('mailSend').href=`mailto:${EMAIL}?subject=${encodeURIComponent('Print enquiry – '+v('req'))}&body=${msg.replace(/\*/g,'')}`;
+  lastEnquiry={name:v('name'),phone:v('phone'),email:v('email'),req:v('req'),desc:v('desc'),mailto:`mailto:${EMAIL}?subject=${encodeURIComponent('Print enquiry – '+v('req'))}&body=${msg.replace(/\*/g,'')}`};
+  const st=document.getElementById('mailStatus'); st.textContent=''; st.className='mail-status';
+  const mb=document.getElementById('mailSend'); mb.disabled=false; mb.textContent='Send by email';
   [...form.children].forEach(c=>{if(c.id!=='sent')c.style.display='none'});
   document.getElementById('sent').style.display='block';
+});
+/* "Send by email": emails the enquiry straight to biz@diimp.com via Web3Forms */
+let lastEnquiry=null;
+document.getElementById('mailSend').addEventListener('click',async()=>{
+  const e=lastEnquiry; if(!e) return;
+  const st=document.getElementById('mailStatus'), mb=document.getElementById('mailSend');
+  if(!WEB3FORMS_KEY){ location.href=e.mailto; return; }        // no key yet: open the mail app
+  mb.disabled=true; mb.textContent='Sending…'; st.className='mail-status'; st.textContent='';
+  try{
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:`New website enquiry – ${e.req} – ${e.name}`,from_name:'diimp.com enquiry form',
+        Name:e.name,Phone:e.phone,Email:e.email||'-',Requirement:e.req,Description:e.desc||'-',...(e.email?{replyto:e.email}:{}),botcheck:''})});
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok||!j.success) throw new Error(j.message||r.status);
+    mb.textContent='Sent ✓'; st.className='mail-status ok'; st.textContent="Thank you! Your enquiry has reached us — we'll get back to you shortly.";
+  }catch(err){
+    mb.disabled=false; mb.textContent='Try again'; st.className='mail-status bad';
+    st.innerHTML=`Couldn't send right now. Please try again, or <a href="${e.mailto}" style="text-decoration:underline">email us directly</a> / WhatsApp us.`;
+  }
 });
 form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>el.closest('.f').classList.remove('bad')));
 </script>
