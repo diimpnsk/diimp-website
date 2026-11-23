@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Impressions — One Stop Print Shop</title>
+<meta name="description" content="Digital Impressions, Nashik — digital, large-format, canvas, vinyl and offset printing. 30+ years of quality printing.">
+
+<link rel="canonical" href="https://diimp.com/">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="theme-color" content="#4E2D7B">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diimp.com/">
+<meta property="og:title" content="Digital Impressions — One Stop Print Shop, Nashik">
+<meta property="og:description" content="Canvas, vinyl, digital and offset printing in Nashik. 30+ years of quality printing.">
+<meta property="og:image" content="https://diimp.com/img/og-image.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Digital Impressions","url":"https://diimp.com/","image":"https://diimp.com/img/og-image.jpg","logo":"https://diimp.com/img/logo-full.png","email":"biz@diimp.com","telephone":"+91 83558 33096","address":{"@type":"PostalAddress","streetAddress":"Shop No. 1, Pratik Apartment, Gangapur Road, Jehan Circle, opp. Nerlikar Hospital","addressLocality":"Nashik","addressRegion":"Maharashtra","postalCode":"422013","addressCountry":"IN"},"sameAs":["https://www.instagram.com/digital._impressions/"]}</script>
+
+<!-- Brand fonts: Outfit (Google Fonts) + Switzer (Fontshare) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Brand palette — built from RGB 78 45 123 */
+    --plum:#4E2D7B;        /* primary  rgb(78,45,123) */
+    --plum-deep:#2E1A4A;   /* dark     rgb(46,26,74)  */
+    --plum-mid:#7A5BA6;    /* mid      rgb(122,91,166)*/
+    --lilac:#C9B9E2;       /* light    rgb(201,185,226)*/
+    --mist:#F3EFF8;        /* tint     rgb(243,239,248)*/
+    --paper:#FCFBFD;       /* bg       */
+    --ink:#1D1727;         /* text     */
+    --muted:#6B6478;       /* secondary text */
+    --line:#E6E0EE;
+    --accent:#E9A23B;      /* warm accent (stars, highlights) rgb(233,162,59) */
+    /* CMY print dots, used sparingly */
+    --c:#25B4E5; --m:#E5307E; --y:#F6D328;
+
+    --head:"Outfit", system-ui, sans-serif;
+    --body:"Switzer", "Outfit", system-ui, sans-serif;
+    --r:14px;
+    --wrap:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--head);font-weight:600;letter-spacing:-.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  section{padding:104px 0}
+  .eyebrow{font-family:var(--head);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--plum-mid);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .dots{display:inline-flex;gap:4px}
+  .dots i{width:6px;height:6px;border-radius:50%;display:block}
+  .dots i:nth-child(1){background:var(--c)}.dots i:nth-child(2){background:var(--m)}.dots i:nth-child(3){background:var(--y)}
+  .h2{font-size:clamp(32px,4.4vw,48px);max-width:16ch}
+  .lead{color:var(--muted);font-size:18px;max-width:52ch;margin-top:16px}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:500;font-size:15px;padding:14px 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:.25s}
+  .btn-primary{background:var(--plum);color:#fff}
+  .btn-primary:hover{background:var(--plum-deep)}
+  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--plum)}
+
+  /* ---------- 1. NAV ---------- */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(252,251,253,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+  header.scrolled{border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:42px;height:42px;border-radius:10px;background:var(--plum);display:grid;place-items:center;color:#fff;font-family:var(--head);font-weight:700;font-size:18px;flex-shrink:0}
+  .logo img{width:100%;height:100%;object-fit:contain}
+  .brand-name{font-family:var(--head);font-weight:600;font-size:19px;line-height:1.1}
+  .brand-tag{font-size:12px;color:var(--muted);letter-spacing:.02em}
+  .menu{display:flex;gap:36px;list-style:none}
+  .menu a{font-family:var(--head);font-size:15px;color:var(--muted);transition:.2s;position:relative}
+  .menu a:hover,.menu a.active{color:var(--plum)}
+  .menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--plum);border-radius:2px}
+  .menu .cta a{color:#fff;background:var(--plum);padding:10px 20px;border-radius:999px}
+  .menu .cta a::after{display:none}
+  .burger{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
+  .burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px auto;transition:.3s}
+
+  /* ---------- 2. VISION / HERO ---------- */
+  .hero{position:relative;height:100vh;min-height:620px;max-height:900px;padding:0;overflow:hidden;color:#fff}
+  /* Placeholder backgrounds — replace with background-image:url(...) */
+  .hero-inner{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:76px}
+  .hero h1{font-size:clamp(48px,8vw,104px);font-weight:600;max-width:11ch;letter-spacing:-.035em}
+  .hero h1 em{font-style:normal;color:var(--lilac)}
+  .hero p{font-size:19px;max-width:46ch;margin:24px 0 36px;opacity:.85}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-wrap{max-width:var(--wrap);margin:0 auto;position:relative;height:100%}
+
+  .about{background:#fff}
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+  .stat{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap}
+  .stat b{font-family:var(--head);font-size:52px;font-weight:600;color:var(--plum);display:block;line-height:1;letter-spacing:-.03em}
+  .stat span{font-size:14px;color:var(--muted)}
+  .pillars{display:grid;gap:16px}
+  .pillar{padding:28px;border:1px solid var(--line);border-radius:var(--r);transition:.3s}
+  .pillar:hover{border-color:var(--lilac);background:var(--mist)}
+  .pillar h3{font-size:20px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  .pillar h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--plum)}
+  .pillar p{color:var(--muted);font-size:15.5px}
+
+  /* ---------- 3. PRODUCTS ---------- */
+  .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .p-card{border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line);transition:.35s;display:flex;flex-direction:column}
+  .p-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(78,45,123,.35)}
+  .p-img{aspect-ratio:1/1;background:var(--mist);position:relative;overflow:hidden;display:grid;place-items:center}
+  .p-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+  .p-card:hover .p-img img{transform:scale(1.05)}
+  .ph{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--plum-mid);border:1px dashed var(--lilac);padding:6px 12px;border-radius:6px}
+  .p-body{padding:22px 22px 26px}
+  .p-num{font-family:var(--head);font-size:13px;color:var(--plum-mid)}
+  .p-body h3{font-size:21px;margin:6px 0 8px}
+  .p-body p{font-size:14.5px;color:var(--muted)}
+
+  /* ---------- REELS ---------- */
+  .reels{background:var(--plum-deep);color:#fff}
+  .reels .eyebrow{color:var(--lilac)}
+  .reels .lead{color:rgba(255,255,255,.65)}
+  .reels-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .reel{aspect-ratio:9/16;border-radius:var(--r);background:linear-gradient(160deg,var(--plum),#24143b);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between;padding:18px;position:relative;overflow:hidden;transition:.3s}
+  .reel:hover{border-color:var(--lilac)}
+  .reel .play{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center;align-self:center;margin-top:auto;margin-bottom:auto;transition:.3s}
+  .reel:hover .play{background:#fff;color:var(--plum)}
+  .reel small{font-size:12px;opacity:.6}
+  .reel .instagram-media{min-width:0!important;width:100%!important;margin:0!important}
+  .ig-link{color:var(--lilac);font-family:var(--head);display:inline-flex;gap:8px;align-items:center}
+
+  /* ---------- 4. SOLUTIONS ---------- */
+  .sol-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .sol{padding:36px 28px 32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:.3s;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;background:#fff}
+  .sol:hover{background:var(--plum);color:#fff}
+  .sol:hover p,.sol:hover .sol-ic{color:var(--lilac)}
+  .sol-ic{color:var(--plum)}
+  .sol h3{font-size:20px;margin-top:28px}
+  .sol p{font-size:14px;color:var(--muted);margin-top:6px}
+  .sol.cta{background:var(--mist);justify-content:center;gap:16px}
+  .sol.cta:hover{background:var(--mist);color:var(--ink)}
+
+  /* ---------- 5. REVIEWS ---------- */
+  .reviews{background:var(--mist)}
+  .rev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .rev{background:#fff;border-radius:var(--r);padding:30px 26px;display:flex;flex-direction:column;gap:18px}
+  .stars{color:var(--accent);letter-spacing:3px;font-size:17px}
+  .rev p{font-size:15.5px;flex:1}
+  .who{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+  .av{width:40px;height:40px;border-radius:50%;background:var(--lilac);color:var(--plum-deep);display:grid;place-items:center;font-family:var(--head);font-weight:600}
+  .who b{font-family:var(--head);font-weight:500;display:block;font-size:15px}
+  .who span{font-size:13px;color:var(--muted)}
+
+  /* ---------- 6. CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:72px}
+  .info{display:grid;gap:26px;margin-top:40px}
+  .info-item{display:flex;gap:16px;align-items:flex-start}
+  .info-ic{width:46px;height:46px;border-radius:12px;background:var(--mist);color:var(--plum);display:grid;place-items:center;flex-shrink:0}
+  .info-item small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .info-item a,.info-item address{font-style:normal;font-family:var(--head);font-size:18px}
+  .info-item a:hover{color:var(--plum)}
+  form{background:#fff;border:1px solid var(--line);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .f{display:flex;flex-direction:column;gap:8px}
+  .f.full{grid-column:1/-1}
+  label{font-family:var(--head);font-size:14px;font-weight:500}
+  label i{font-style:normal;color:var(--muted);font-weight:400}
+  input,select,textarea{font:inherit;font-size:15px;padding:13px 16px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);transition:.2s;width:100%}
+  select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%234E2D7B' stroke-width='1.6'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--plum);box-shadow:0 0 0 4px rgba(78,45,123,.1);background:#fff}
+  textarea{min-height:120px;resize:vertical}
+  .err{font-size:12.5px;color:#C2185B;display:none}
+  .f.bad .err{display:block}
+  .f.bad input,.f.bad select{border-color:#C2185B}
+  .form-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .form-foot small{color:var(--muted);font-size:13px}
+  .sent{grid-column:1/-1;display:none;text-align:center;padding:24px 0}
+  .sent h3{font-size:26px;margin-bottom:8px}
+  .sent p{color:var(--muted);margin-bottom:24px}
+  .sent .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn-wa{background:#1FA855;color:#fff}
+  .btn-line{border-color:var(--line);color:var(--ink)}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.6);padding:40px 0;font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  footer .brand-name{color:#fff;font-size:16px}
+
+  .float-wa{position:fixed;right:22px;bottom:22px;z-index:40;width:56px;height:56px;border-radius:50%;background:#1FA855;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.35);transition:.25s}
+  .float-wa:hover{transform:scale(1.08)}
+
+  /* ---------- v2 additions ---------- */
+  .logo-img{height:44px;width:auto}
+  .hero-video,.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-poster{background:center/cover no-repeat}
+  .hero-tint{position:absolute;inset:0;background:linear-gradient(100deg,rgba(46,26,74,.92) 0%,rgba(78,45,123,.78) 45%,rgba(78,45,123,.45) 100%)}
+  .p-img.ph-box{background:linear-gradient(160deg,var(--mist),#e4dbf0)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:20px}
+  .feat{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;color:#fff;display:flex;align-items:flex-end}
+  .feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.7s}
+  .feat:hover img{transform:scale(1.05)}
+  .feat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(29,23,39,.78))}
+  .feat div{position:relative;z-index:1;padding:24px}
+  .feat h3{font-size:22px}
+  .feat p{font-size:14px;opacity:.8;margin-top:4px}
+  .sol-grid.four{grid-template-columns:repeat(4,1fr)}
+  .reels-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+  .reel-item{flex:0 0 328px;scroll-snap-align:start}
+  .reel-item .instagram-media{background:transparent!important;border:0!important;box-shadow:none!important;margin:0!important;min-width:0!important;max-width:328px!important;width:328px!important;padding:0!important}
+  .reel{aspect-ratio:9/16;width:328px;color:#fff}
+  .reel-player{position:relative;width:328px;aspect-ratio:9/16;border-radius:var(--r);overflow:hidden;background:#24143b}
+  .reel-video{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
+  .reel-sound{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:16px;cursor:pointer;backdrop-filter:blur(6px)}
+  .reel-ig{position:absolute;left:12px;bottom:14px;font-size:12px;color:#fff;background:rgba(0,0,0,.4);padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+  .reel-player.off{display:none}
+  .rev p.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+  .more{background:none;border:0;font:inherit;font-family:var(--head);color:var(--plum);cursor:pointer;padding:0;align-self:flex-start;font-size:14px}
+  .gbadge{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+  .rv.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1024px){
+    .products-grid,.rev-grid{grid-template-columns:repeat(2,1fr)}
+    .sol-grid,.sol-grid.four{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:1fr 1fr}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}
+  }
+  @media (max-width:820px){
+    .burger{display:block}
+    .menu{position:fixed;top:76px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 24px 24px;transform:translateY(-120%);transition:.35s;z-index:-1}
+    .menu.open{transform:none}
+    .menu li a{display:block;padding:14px 0;font-size:18px;border-bottom:1px solid var(--line)}
+    .menu a.active::after{display:none}
+    .menu .cta a{margin-top:16px;text-align:center;border:0}
+    .burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.x span:nth-child(2){opacity:0}
+    .burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  }
+  @media (max-width:600px){
+    section{padding:76px 0}
+    .products-grid,.rev-grid,.sol-grid,.sol-grid.four,.feat-grid{grid-template-columns:1fr}
+    .reel-item{flex-basis:280px}.reel,.reel-player{width:280px}
+    .logo-img{height:38px}
+    .p-img{aspect-ratio:4/3}
+    form{grid-template-columns:1fr;padding:26px}
+    .brand-tag{display:none}
+    .ph-label{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ 1. TOP NAV ============ -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#vision" class="brand" aria-label="Home">
+      <img class="logo-img" src="img/logo-mark.png" alt="Digital Impressions logo">
+      <div>
+        <div class="brand-name">Digital Impressions</div>
+        <div class="brand-tag">One Stop Print Shop</div>
+      </div>
+    </a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="menu">
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li class="cta"><a href="#contact">Contact us</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ 2. VISION (rotating banner) ============ -->
+<section class="hero" id="vision" aria-label="Banner">
+  <!-- Background: Rohan Legacy brochure reel, muted 28s loop (video/hero-reel.mp4) -->
+  <div class="hero-poster" style="background-image:url('video/hero-poster.jpg')"></div>
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="video/hero-poster.jpg" aria-hidden="true">
+    <source src="video/hero-reel.mp4" type="video/mp4">
+  </video>
+  <div class="hero-tint"></div>
+  <div class="hero-wrap">
+    <div class="wrap hero-inner">
+      <div class="eyebrow" style="color:var(--lilac)"><span class="dots"><i></i><i></i><i></i></span>30+ years of printing</div>
+      <h1>One stop <em>print</em> shop.</h1>
+      <p>From business cards to building wraps — digital, large-format and offset printing, done with precision and care.</p>
+      <div class="actions">
+        <a href="#contact" class="btn btn-primary" style="background:#fff;color:var(--plum)">Get a quote →</a>
+        <a href="#products" class="btn btn-ghost">See our work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i></span>About us</div>
+      <h2 class="h2">A legacy built on ink, paper and trust.</h2>
+      <p class="lead">With 30+ years of trust, experience, and a strong legacy in printing, we are a one-stop partner offering everything from small-format prints to large-scale projects, backed by quality, innovation, and reliability.</p>
+      <div class="stat">
+        <div><b>30+</b><span>Years in print</span></div>
+        <div><b>4</b><span>Print technologies</span></div>
+        <div><b>7</b><span>Solution categories</span></div>
+      </div>
+    </div>
+    <div class="pillars rv">
+      <div class="pillar">
+        <h3>Mission</h3>
+        <p>To deliver high-quality, innovative, and affordable digital printing solutions that bring ideas to life with precision and creativity.</p>
+      </div>
+      <div class="pillar">
+        <h3>Vision</h3>
+        <p>To be the most trusted and leading provider of digital and large-format printing, empowering brands and individuals with impactful prints.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. PRODUCTS & OUR WORK ============ -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="eyebrow"><span class="dots"><i></i><i></i><i></i></span>Products & our work</div>
+        <h2 class="h2">Printed to be noticed.</h2>
+      </div>
+      <p class="lead" style="margin:0">Four core print technologies, one standard of quality.</p>
+    </div>
+    <div class="products-grid">
+      <article class="p-card rv">
+        <!-- Canvas photo pending: replace the span with <img src="img/canvas.jpg" alt="Canvas print"> -->
+        <div class="p-img ph-box"><span class="ph">Canvas photo</span></div>
+        <div class="p-body"><div class="p-num">01</div><h3>Premium Canvas Printing</h3><p>Gallery-grade canvas prints with rich colour and lasting finish.</p></div>
+      </article>
+      <article class="p-card rv">
+        <div class="p-img"><img src="img/vinyl-sulafest.jpg" alt="Outdoor vinyl banner printed for Sulafest" loading="lazy"></div>
+        <div class="p-body"><div class="p-num">02</div><h3>Premium Vinyl Printing</h3><p>Durable, weather-ready vinyl for signage, wraps and event branding.</p></div>
+      </article>
+      <article class="p-card rv">
+        <div class="p-img"><img src="img/navratri-passes.jpg" alt="Die-cut Navratri festival passes" loading="lazy"></div>
+        <div class="p-body"><div class="p-num">03</div><h3>Digital Printing</h3><p>Fast, sharp short runs — including die-cut passes and custom shapes.</p></div>
+      </article>
+      <article class="p-card rv">
+        <div class="p-img"><img src="img/wedding-cards.jpg" alt="Wedding invitation suite" loading="lazy"></div>
+        <div class="p-body"><div class="p-num">04</div><h3>Offset Printing</h3><p>Consistent, cost-effective quality for high-volume runs.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM REELS ============ -->
+<section class="reels" id="reels">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="eyebrow"><span class="dots"><i></i><i></i><i></i></span>From the press floor</div>
+        <h2 class="h2">Watch our work come alive.</h2>
+      </div>
+      <a href="https://www.instagram.com/digital._impressions/" class="ig-link" target="_blank" rel="noopener">Follow us on Instagram →</a>
+    </div>
+    <!-- Each reel plays on the page from video/reel-1.mp4 … reel-4.mp4.
+         If a file is missing, that card falls back to Instagram's embed. -->
+    <div class="reels-row">
+      <div class="reel-item rv">
+        <div class="reel-player">
+          <video class="reel-video" src="video/reel-1.mp4" poster="video/reel-1.jpg" muted loop playsinline preload="metadata" aria-label="Vastu Group coffee-table book"></video>
+          <button class="reel-sound" type="button" aria-label="Turn sound on">🔇</button>
+          <a class="reel-ig" href="https://www.instagram.com/p/DYXCpItNKdM/" target="_blank" rel="noopener">View on Instagram ↗</a>
+        </div>
+        <div class="reel-fallback" hidden>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYXCpItNKdM/" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DYXCpItNKdM/" target="_blank" rel="noopener"><small>@digital._impressions</small><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><small>Watch reel 1 on Instagram →</small></a>
+        </blockquote>
+        </div>
+      </div>
+      <div class="reel-item rv">
+        <div class="reel-player">
+          <video class="reel-video" src="video/reel-2.mp4" poster="video/reel-2.jpg" muted loop playsinline preload="metadata" aria-label="Rohan Legacy brochure"></video>
+          <button class="reel-sound" type="button" aria-label="Turn sound on">🔇</button>
+          <a class="reel-ig" href="https://www.instagram.com/p/DYpSwROSiUn/" target="_blank" rel="noopener">View on Instagram ↗</a>
+        </div>
+        <div class="reel-fallback" hidden>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DYpSwROSiUn/" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/DYpSwROSiUn/" target="_blank" rel="noopener"><small>@digital._impressions</small><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><small>Watch reel 2 on Instagram →</small></a>
+        </blockquote>
+        </div>
+      </div>
+      <div class="reel-item rv">
+        <div class="reel-player">
+          <video class="reel-video" src="video/reel-3.mp4" poster="video/reel-3.jpg" muted loop playsinline preload="metadata" aria-label="Framed-print photo exhibition"></video>
+          <button class="reel-sound" type="button" aria-label="Turn sound on">🔇</button>
+          <a class="reel-ig" href="https://www.instagram.com/p/Dequb_UTe0Q/" target="_blank" rel="noopener">View on Instagram ↗</a>
+        </div>
+        <div class="reel-fallback" hidden>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dequb_UTe0Q/" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/Dequb_UTe0Q/" target="_blank" rel="noopener"><small>@digital._impressions</small><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><small>Watch reel 3 on Instagram →</small></a>
+        </blockquote>
+        </div>
+      </div>
+      <div class="reel-item rv">
+        <div class="reel-player">
+          <video class="reel-video" src="video/reel-4.mp4" poster="video/reel-4.jpg" muted loop playsinline preload="metadata" aria-label="Ammas café menu"></video>
+          <button class="reel-sound" type="button" aria-label="Turn sound on">🔇</button>
+          <a class="reel-ig" href="https://www.instagram.com/p/Dcl6flGgo8r/" target="_blank" rel="noopener">View on Instagram ↗</a>
+        </div>
+        <div class="reel-fallback" hidden>
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dcl6flGgo8r/" data-instgrm-version="14">
+          <a class="reel" href="https://www.instagram.com/p/Dcl6flGgo8r/" target="_blank" rel="noopener"><small>@digital._impressions</small><div class="play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><small>Watch reel 4 on Instagram →</small></a>
+        </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. SOLUTIONS ============ -->
+<section id="solutions">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="eyebrow"><span class="dots"><i></i><i></i><i></i></span>Solutions</div>
+        <h2 class="h2">Whatever you need on paper.</h2>
+      </div>
+      <div><p class="lead" style="margin:0 0 20px">Complete print solutions for businesses, cafés, events and brands.</p><a href="#contact" class="btn btn-primary">Discuss your project →</a></div>
+    </div>
+    <div class="feat-grid">
+      <a href="#contact" class="feat rv"><img src="img/wedding-cards.jpg" alt="Wedding invitation suite" loading="lazy"><div><h3>Wedding Supplies</h3><p>Invitations, event cards, envelopes and signage.</p></div></a>
+      <a href="#contact" class="feat rv"><img src="img/cafe-menu.jpg" alt="Café menus and menu cards" loading="lazy"><div><h3>Café Supplies</h3><p>Menus, flip cards, tent cards and sleeves.</p></div></a>
+      <a href="#contact" class="feat rv"><img src="img/labels.jpg" alt="Foil-finished product label on a bottle" loading="lazy"><div><h3>Labels</h3><p>Product, roll and cut-to-shape labels.</p></div></a>
+    </div>
+    <div class="sol-grid four rv">
+      <div class="sol"><svg class="sol-ic" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/></svg><div><h3>Brochures & CTB</h3><p>Folded brochures, catalogues and booklets.</p></div></div>
+      <div class="sol"><svg class="sol-ic" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5"/></svg><div><h3>Office Stationery & Marketing</h3><p>Letterheads, cards, flyers, standees.</p></div></div>
+      <div class="sol"><svg class="sol-ic" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg><div><h3>Premium Finishing</h3><p>Lamination, foiling, embossing, spot UV.</p></div></div>
+      <div class="sol"><svg class="sol-ic" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7zM4 7l8 4 8-4M12 11v10"/></svg><div><h3>Monocartons</h3><p>Printed folding boxes for retail packaging.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="eyebrow"><span class="dots"><i></i><i></i><i></i></span>Reviews</div>
+        <h2 class="h2">Kind words from our customers.</h2>
+      </div>
+      <p class="lead" style="margin:0">5.0 ★ on Google from customers across Nashik.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev rv"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="clamp">Working with Digital Impressions has been a journey of trust built over time. From the first project itself, it was clear why they proudly call themselves “the printing people.” Printing is not just a service here, it is a craft they understand deeply.<br><br>Whenever we had complicated or demanding print requirements, Digital Impressions was the name that kept coming up. Even other printers in the district turn to them when the job needs precision. Their understanding of printing technology really shows, especially when it comes to colour accuracy. The colours they deliver match exactly what the client expects, with no surprises.<br><br>What sets them apart is their ability to print on a wide variety of materials. With advanced machines and strong technical knowledge, they handle jobs that most printers avoid. From brochures, labels, and cut to shape stickers to letterheads, posters, books, business cards, and even complex materials, the output quality is consistently high.<br><br>The team is skilled, responsive, and professional in every interaction. We prefer Digital Impressions because they regularly work with large corporate clients, which means they follow industry standards and timelines without compromise.<br><br>A special mention to Salil Datar, the owner, who brings the experience of two generations in printing. At the same time, he continues to introduce new technology and capabilities, taking Digital Impressions forward while keeping quality at the core.<br><br>If you are looking for dependable, high quality printing with technical expertise, Digital Impressions is a name you can rely on.</p><button class="more" type="button">Read more</button><div class="who"><div class="av">P</div><div><b>Paresh Chitnis</b><span>Local Guide · Google review</span></div></div></div>
+      <div class="rev rv"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>Exceptional service, affordable cost, immaculate quality. Highly recommended!</p><div class="who"><div class="av">I</div><div><b>Indrajeet Bonde</b><span>Local Guide · Google review</span></div></div></div>
+      <div class="rev rv"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>Very fast service and great support from staff.</p><div class="who"><div class="av">M</div><div><b>Mayur Gadekar</b><span>Local Guide · Google review</span></div></div></div>
+      <div class="rev rv"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p>Absolutely top-notch service and quality. Highly recommended!</p><div class="who"><div class="av">D</div><div><b>Divya Chaudhari</b><span>Google review</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. CONTACT US ============ -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <div class="eyebrow"><span class="dots"><i></i><i></i><i></i></span>Contact us</div>
+      <h2 class="h2">Let's print something great.</h2>
+      <p class="lead">Tell us what you need and we'll get back to you with options and a quote.</p>
+      <div class="info">
+        <div class="info-item"><div class="info-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg></div><div><small>Email</small><a href="mailto:biz@diimp.com" id="emailLink">biz@diimp.com</a></div></div>
+        <div class="info-item"><div class="info-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></div><div><small>WhatsApp</small><a href="https://wa.me/918355833096" target="_blank" rel="noopener">+91 83558 33096</a></div></div>
+        <div class="info-item"><div class="info-ic"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div><div><small>Visit us</small><address><a href="https://www.google.com/maps/search/?api=1&query=Digital+Impressions+Pratik+Apartment+Gangapur+Road+Nashik" target="_blank" rel="noopener" style="font-size:16px;line-height:1.5">Shop No. 1, Pratik Apartment, Gangapur Road,<br>Jehan Circle, opp. Nerlikar Hospital,<br>Nashik, Maharashtra 422013</a></address></div></div>
+      </div>
+    </div>
+
+    <form id="enquiry" class="rv" novalidate>
+      <div class="f"><label for="name">Name</label><input id="name" name="name" autocomplete="name" placeholder="Your full name"><span class="err">Please enter your name</span></div>
+      <div class="f"><label for="phone">Number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="10-digit mobile number"><span class="err">Please enter a valid phone number</span></div>
+      <div class="f full"><label for="email">Email <i>(optional)</i></label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com"><span class="err">That email doesn't look right</span></div>
+      <div class="f full"><label for="req">Requirement</label>
+        <select id="req" name="req">
+          <option value="">Select a service</option>
+          <option>Premium Canvas Printing</option>
+          <option>Premium Vinyl Printing</option>
+          <option>Digital Printing</option>
+          <option>Offset Printing</option>
+          <option>Other Printing Solutions</option>
+        </select><span class="err">Please choose a requirement</span></div>
+      <div class="f full"><label for="desc">Description</label><textarea id="desc" name="desc" placeholder="Size, quantity, material, deadline…"></textarea></div>
+      <div class="form-foot"><small>We usually reply within a few hours.</small><button type="submit" class="btn btn-primary">Send enquiry →</button></div>
+      <div class="sent" id="sent">
+        <h3>Almost done!</h3>
+        <p>Your enquiry is ready. Choose how you'd like to send it to us:</p>
+        <div class="row"><a class="btn btn-wa" id="waSend" target="_blank" rel="noopener">Send on WhatsApp</a><a class="btn btn-line" id="mailSend">Send by email</a></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><img src="img/logo-mark-white.png" alt="" style="height:34px"><div class="brand-name">Digital Impressions</div></div>
+    <div><a href="https://www.instagram.com/digital._impressions/" target="_blank" rel="noopener" style="color:#fff">Instagram</a> &nbsp;·&nbsp; © <span id="yr"></span> Digital Impressions, Nashik</div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/918355833096" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.8-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+
+<script>
+/* ---- Business details: edit these ---- */
+const WHATSAPP = "918355833096";          // country code + number, no "+" or spaces
+const EMAIL    = "biz@diimp.com";
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Header shadow + active menu link */
+const header = document.querySelector('header');
+const links = [...document.querySelectorAll('.menu a')];
+const secs = ['vision','products','solutions','reviews','contact'].map(id=>document.getElementById(id));
+addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled', scrollY>10);
+  let cur='vision';
+  secs.forEach(s=>{ if(s.getBoundingClientRect().top < 140) cur=s.id; });
+  links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur && cur!=='contact'));
+},{passive:true});
+
+/* Mobile menu */
+const burger=document.querySelector('.burger'), menu=document.querySelector('.menu');
+burger.onclick=()=>{const o=menu.classList.toggle('open');burger.classList.toggle('x',o);burger.setAttribute('aria-expanded',o)};
+links.forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.classList.remove('x')}));
+
+/* Read more on long reviews */
+document.querySelectorAll('.more').forEach(b=>b.onclick=()=>{const p=b.previousElementSibling;const open=p.classList.toggle('clamp');b.textContent=open?'Read more':'Show less'});
+
+/* Reels: play on the page while visible; fall back to Instagram embed if the file is missing */
+const igLoad=()=>{if(window.__ig)return;window.__ig=1;const sc=document.createElement('script');sc.async=true;sc.src='https://www.instagram.com/embed.js';document.body.appendChild(sc)};
+const reelIO=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{})}else{v.pause()}}),{threshold:.5});
+document.querySelectorAll('.reel-player').forEach(p=>{
+  const v=p.querySelector('video'), btn=p.querySelector('.reel-sound');
+  const fail=()=>{if(p.classList.contains('off'))return;p.classList.add('off');p.nextElementSibling.hidden=false;igLoad();if(window.instgrm)instgrm.Embeds.process()};
+  v.addEventListener('error',fail);
+  if(v.error||v.networkState===3)fail();
+  reelIO.observe(v);
+  v.onclick=()=>v.paused?v.play():v.pause();
+  btn.onclick=()=>{
+    const turnOn=v.muted;
+    document.querySelectorAll('.reel-video').forEach(o=>{o.muted=true;o.parentElement.querySelector('.reel-sound').textContent='🔇'});
+    v.muted=!turnOn; btn.textContent=turnOn?'🔊':'🔇'; btn.setAttribute('aria-label',turnOn?'Mute':'Turn sound on'); if(turnOn)v.play();
+  };
+});
+
+/* Reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+
+/* Enquiry form → WhatsApp / email */
+const form=document.getElementById('enquiry');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=id=>form[id].value.trim();
+  const checks={
+    name: v('name').length>1,
+    phone: /^[+]?[\d\s-]{10,15}$/.test(v('phone')),
+    email: !v('email') || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email')),
+    req: !!v('req')
+  };
+  let ok=true;
+  for(const k in checks){form[k].closest('.f').classList.toggle('bad',!checks[k]); if(!checks[k]) ok=false;}
+  if(!ok) return;
+  const msg=`Hello! New enquiry from the website:%0A%0A*Name:* ${encodeURIComponent(v('name'))}%0A*Phone:* ${encodeURIComponent(v('phone'))}%0A*Email:* ${encodeURIComponent(v('email')||'-')}%0A*Requirement:* ${encodeURIComponent(v('req'))}%0A*Details:* ${encodeURIComponent(v('desc')||'-')}`;
+  document.getElementById('waSend').href=`https://wa.me/${WHATSAPP}?text=${msg}`;
+  document.getElementById('mailSend').href=`mailto:${EMAIL}?subject=${encodeURIComponent('Print enquiry – '+v('req'))}&body=${msg.replace(/\*/g,'')}`;
+  [...form.children].forEach(c=>{if(c.id!=='sent')c.style.display='none'});
+  document.getElementById('sent').style.display='block';
+});
+form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>el.closest('.f').classList.remove('bad')));
+</script>
+</body>
+</html>
