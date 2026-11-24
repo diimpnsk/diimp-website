@@ -92,3 +92,33 @@ document.getElementById('mailSend').addEventListener('click',async()=>{
   }
 });
 form.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>el.closest('.f').classList.remove('bad')));
+
+/* Reels carousel: arrows + dots (one dot per scroll position) */
+(()=>{
+  const row=document.querySelector('.reels-row'), nav=document.querySelector('.reel-nav');
+  if(!row||!nav) return;
+  const items=[...row.querySelectorAll('.reel-item')], dotsBox=nav.querySelector('.reel-dots');
+  const [prev,next]=nav.querySelectorAll('.reel-arrow');
+  let stops=[], dots=[];
+  const maxScroll=()=>Math.max(0,row.scrollWidth-row.clientWidth);
+  const current=()=>{let best=0,dist=Infinity;stops.forEach((x,i)=>{const d=Math.abs(x-row.scrollLeft);if(d<dist){dist=d;best=i;}});return best;};
+  const go=i=>{i=Math.max(0,Math.min(stops.length-1,i));row.scrollTo({left:stops[i],behavior:'smooth'});};
+  const build=()=>{
+    const m=maxScroll(), seen=new Set();
+    stops=items.map(it=>Math.min(Math.round(it.offsetLeft-items[0].offsetLeft),Math.round(m))).filter(x=>!seen.has(x)&&seen.add(x));
+    dots=stops.map((_,i)=>{const b=document.createElement('button');b.type='button';b.className='reel-dot';b.setAttribute('role','tab');b.setAttribute('aria-label','Go to position '+(i+1)+' of '+stops.length);b.addEventListener('click',()=>go(i));return b;});
+    dotsBox.replaceChildren(...dots);
+    update();
+  };
+  const update=()=>{
+    nav.hidden=stops.length<2;
+    const c=current();
+    dots.forEach((d,i)=>{d.classList.toggle('on',i===c);d.setAttribute('aria-selected',String(i===c));});
+    prev.disabled=row.scrollLeft<=4; next.disabled=row.scrollLeft>=maxScroll()-4;
+  };
+  prev.addEventListener('click',()=>go(current()-1));
+  next.addEventListener('click',()=>go(current()+1));
+  row.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+  let t; addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(build,150);});
+  build();
+})();
