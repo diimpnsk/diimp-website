@@ -10,8 +10,17 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 const header = document.querySelector('header');
 const links = [...document.querySelectorAll('.menu a')];
 const secs = ['vision','products','solutions','reviews','contact'].map(id=>document.getElementById(id));
-addEventListener('scroll',()=>{
+const heroEl=document.getElementById('vision');
+const setHeaderMode=()=>{
+  const menuOpen=document.querySelector('.menu')?.classList.contains('open');
+  const overHero=heroEl && scrollY < heroEl.offsetHeight-80;
   header.classList.toggle('scrolled', scrollY>10);
+  header.classList.toggle('on-hero', scrollY<=10 && !!overHero && !menuOpen);
+};
+setHeaderMode();
+addEventListener('resize',setHeaderMode);
+addEventListener('scroll',()=>{
+  setHeaderMode();
   let cur='vision';
   secs.forEach(s=>{ if(s.getBoundingClientRect().top < 140) cur=s.id; });
   links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur && cur!=='contact'));
@@ -19,8 +28,8 @@ addEventListener('scroll',()=>{
 
 /* Mobile menu */
 const burger=document.querySelector('.burger'), menu=document.querySelector('.menu');
-burger.onclick=()=>{const o=menu.classList.toggle('open');burger.classList.toggle('x',o);burger.setAttribute('aria-expanded',o)};
-links.forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.classList.remove('x')}));
+burger.onclick=()=>{const o=menu.classList.toggle('open');burger.classList.toggle('x',o);burger.setAttribute('aria-expanded',o);setHeaderMode()};
+links.forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.classList.remove('x');setHeaderMode()}));
 
 /* Read more on long reviews */
 document.querySelectorAll('.more').forEach(b=>b.onclick=()=>{const p=b.previousElementSibling;const open=p.classList.toggle('clamp');b.textContent=open?'Read more':'Show less'});

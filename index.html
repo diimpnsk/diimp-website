@@ -234,6 +234,22 @@
   .map{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85)}
   .map-link{position:absolute;right:12px;bottom:12px;background:var(--plum);color:#fff;font-family:var(--head);font-size:13px;padding:8px 14px;border-radius:999px;box-shadow:0 6px 18px -6px rgba(0,0,0,.35)}
   .map-link:hover{background:var(--plum-deep)}
+  /* Transparent menu bar over the video while at the top of the page */
+  header{transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease}
+  .logo-light{display:none}
+  header.on-hero{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-color:transparent}
+  header.on-hero .logo-dark{display:none}
+  header.on-hero .logo-light{display:block}
+  header.on-hero .brand-name{color:#fff}
+  header.on-hero .brand-tag{color:rgba(255,255,255,.75)}
+  header.on-hero .burger span{background:#fff}
+  @media (min-width:821px){
+    header.on-hero .menu a{color:rgba(255,255,255,.85)}
+    header.on-hero .menu a:hover{color:#fff}
+    header.on-hero .menu a.active::after{background:#fff}
+    header.on-hero .menu .cta a{background:#fff;color:var(--plum)}
+  }
+  .hero-tint::before{content:"";position:absolute;inset:0 0 auto 0;height:180px;background:linear-gradient(180deg,rgba(29,23,39,.5),transparent)}
   .rev p.clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
   .more{background:none;border:0;font:inherit;font-family:var(--head);color:var(--plum);cursor:pointer;padding:0;align-self:flex-start;font-size:14px}
   .gbadge{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
@@ -279,7 +295,8 @@
 <header id="top">
   <div class="wrap nav">
     <a href="#vision" class="brand" aria-label="Home">
-      <img class="logo-img" src="img/logo-mark.png" alt="Digital Impressions logo">
+      <img class="logo-img logo-dark" src="img/logo-mark.png" alt="Digital Impressions logo">
+      <img class="logo-img logo-light" src="img/logo-mark-white.png" alt="" aria-hidden="true">
       <div>
         <div class="brand-name">Digital Impressions</div>
         <div class="brand-tag">One Stop Print Shop</div>
